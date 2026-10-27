@@ -152,6 +152,16 @@ a rect for a bounding box
 a constructor that takes a starting_x, starting_y, and size and initializes ALL values
 */  
     public:
+
+    void update(Player& player){
+        /*
+        Move the enemy towards the player. 
+        Think about how you can achieve this! 
+        Consider adding a speed instance variable to the enemy
+        Update the bounding box of the enemy
+        */
+    }
+    
     bn::sprite_ptr sprite; // bn::sprite_items::dot.create_sprite();
     bn::fixed speed; // The speed of the player
     bn::size size; // The width and height of the sprite
