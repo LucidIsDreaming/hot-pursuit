@@ -31,6 +31,11 @@ static constexpr int SCORE_Y = -70;
 static constexpr int HIGH_SCORE_X = -70;
 static constexpr int HIGH_SCORE_Y = -70;
 
+static constexpr int X_START = 44;
+static constexpr int Y_START = 22;
+
+static constexpr int SPEED = 1.5;
+
 /**
  * Creates a rectangle centered at a sprite's location with a given size.
  * sprite the sprite to center the box around
@@ -123,7 +128,7 @@ class Player {
         bn::rect bounding_box; // The rectangle around the sprite for checking collision
 
         Player() : 
-        sprite(bn::sprite_items::dot.create_sprite(44, 22)), speed(1.5), size(PLAYER_SIZE), 
+        sprite(bn::sprite_items::dot.create_sprite(X_START, Y_START)), speed(SPEED), size(PLAYER_SIZE), 
         bounding_box(create_bounding_box(sprite, size)) {}
 };
 
