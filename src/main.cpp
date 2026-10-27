@@ -100,32 +100,6 @@ class ScoreDisplay {
 
 class Player {
     public:
-    // Create a player and initialize it
-    // TODO: we will move the initialization logic to a constructor.
-    //Player player = Player();
-    bn::sprite_ptr sprite; //= bn::sprite_items::dot.create_sprite()
-    bn::fixed x_speed;
-
-    bn::fixed y_speed;
-
-
-
-    bn::fixed speed;
-    bn::fixed size;
-    bn::fixed bounding_box;
-
-
-        // Create the sprite. This will be moved to a constructor
-        Player(bn::fixed x_start, bn::fixed y_start) : 
-        sprite(bn::sprite_items::dot.create_sprite(x_start, y_start)), speed(1.5), size(PLAYER_SIZE), 
-        bounding_box(create_bounding_box(sprite, size))
-        {
-
-        
-        
-
-        }
-
         /**
          * Update the position and bounding box of the player based on d-pad movement.
          */
@@ -174,12 +148,12 @@ int main() {
     bn::rect enemy_bounding_box = create_bounding_box(enemy_sprite, ENEMY_SIZE);
 
     while(true) {
-        Player.update();
+        player.update();
 
         // Reset the current score and player position if the player collides with enemy
-        if(enemy_bounding_box.intersects(Player.bounding_box)) {
+        if(enemy_bounding_box.intersects(player.bounding_box)) {
             scoreDisplay.resetScore();
-            Player.sprite.set_x(44);
+            player.sprite.set_x(44);
             player.sprite.set_y(22);
         }
 
