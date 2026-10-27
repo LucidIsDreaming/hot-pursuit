@@ -110,12 +110,19 @@ class Player {
          */
         void update() {
             if(bn::keypad::right_held()) {
-                sprite.set_x(sprite.x() + speed);
+                sprite.set_x(sprite.x() + SPEED);
             }
             if(bn::keypad::left_held()) {
-                sprite.set_x(sprite.x() - speed);
+                sprite.set_x(sprite.x() - SPEED);
             }
             // TODO: Add logic for up and down
+            if(bn::keypad::up_held()) {
+                sprite.set_y(sprite.y() - SPEED);
+            }
+            if(bn::keypad::down_held()) {
+                sprite.set_y(sprite.y() + SPEED);
+            }
+        
 
 
             bounding_box = create_bounding_box(sprite, size);
