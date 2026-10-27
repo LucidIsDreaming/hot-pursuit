@@ -160,6 +160,24 @@ a constructor that takes a starting_x, starting_y, and size and initializes ALL 
         Consider adding a speed instance variable to the enemy
         Update the bounding box of the enemy
         */
+
+        if(sprite.x() < player.sprite.x()){
+            sprite.set_x(sprite.x() + SPEED);
+        }
+
+        if(sprite.x() > player.sprite.x()){
+            sprite.set_x(sprite.x() - SPEED);
+        }
+
+        if(sprite.y() > player.sprite.y()){
+            sprite.set_x(sprite.y() - SPEED);
+        }
+
+        if(sprite.y() < player.sprite.y()){
+            sprite.set_x(sprite.y() - SPEED);
+        }
+
+
     }
     
     bn::sprite_ptr sprite; // bn::sprite_items::dot.create_sprite();
