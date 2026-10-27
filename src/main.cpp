@@ -138,12 +138,22 @@ class Player {
             }
             // TODO: Add logic for up and down
 
+
             bounding_box = create_bounding_box(sprite, size);
         }
 
+        // Create the sprite. This will be moved to a constructor
+         bn::sprite_ptr sprite; // bn::sprite_items::dot.create_sprite();
+        bn::fixed speed; // The speed of the player
+        bn::size size; // The width and height of the sprite
+        bn::rect bounding_box; // The rectangle around the sprite for checking collision
 
-        
+        Player() : 
+        sprite(bn::sprite_items::dot.create_sprite(44, 22)), speed(1.5), size(PLAYER_SIZE), 
+        bounding_box(create_bounding_box(sprite, size)) {}
 };
+
+
 
 int main() {
     bn::core::init();
@@ -151,6 +161,14 @@ int main() {
     // Create a new score display
     ScoreDisplay scoreDisplay = ScoreDisplay();
 
+    // Create a player and initialize it
+    // TODO: we will move the initialization logic to a constructor.
+    Player player = Player();
+    // player.sprite.set_x(44);
+    // player.sprite.set_y(22);
+    // player.speed = 1.5;
+    // player.size = PLAYER_SIZE;
+    // player.bounding_box = create_bounding_box(player.sprite, player.size);
 
     bn::sprite_ptr enemy_sprite = bn::sprite_items::square.create_sprite(-30, 22);
     bn::rect enemy_bounding_box = create_bounding_box(enemy_sprite, ENEMY_SIZE);
