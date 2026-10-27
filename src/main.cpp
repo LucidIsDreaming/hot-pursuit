@@ -115,7 +115,7 @@ class Player {
             if(bn::keypad::left_held()) {
                 sprite.set_x(sprite.x() - SPEED);
             }
-            
+
             // TODO: Add logic for up and down
             if(bn::keypad::up_held()) {
                 sprite.set_y(sprite.y() - SPEED);
@@ -140,6 +140,10 @@ class Player {
         bounding_box(create_bounding_box(sprite, size)) {}
 };
 
+class Enemy {
+
+};
+
 
 
 int main() {
@@ -151,6 +155,8 @@ int main() {
     // Create a player and initialize it
     // TODO: we will move the initialization logic to a constructor.
     Player player = Player();
+
+    Enemy enemy = Enemy();
     // player.sprite.set_x(44);
     // player.sprite.set_y(22);
     // player.speed = 1.5;
