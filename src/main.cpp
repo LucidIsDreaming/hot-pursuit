@@ -134,7 +134,7 @@ class Player {
         }
 
         // Create the sprite. This will be moved to a constructor
-         bn::sprite_ptr sprite; // bn::sprite_items::dot.create_sprite();
+        bn::sprite_ptr sprite; // bn::sprite_items::dot.create_sprite();
         bn::fixed speed; // The speed of the player
         bn::size size; // The width and height of the sprite
         bn::rect bounding_box; // The rectangle around the sprite for checking collision
@@ -170,13 +170,14 @@ a constructor that takes a starting_x, starting_y, and size and initializes ALL 
         }
 
         if(sprite.y() > player.sprite.y()){
-            sprite.set_x(sprite.y() - SPEED);
+            sprite.set_y(sprite.y() - SPEED);
         }
 
         if(sprite.y() < player.sprite.y()){
-            sprite.set_x(sprite.y() - SPEED);
+            sprite.set_y(sprite.y() + SPEED);
         }
 
+        enemy_bounding_box = create_bounding_box(sprite, size);
 
     }
     
@@ -216,6 +217,7 @@ int main() {
 
     while(true) {
         player.update();
+        enemy.update(player);
 
         // Reset the current score and player position if the player collides with enemy
         if(enemy.enemy_bounding_box.intersects(player.bounding_box)) {
