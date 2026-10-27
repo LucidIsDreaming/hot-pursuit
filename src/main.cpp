@@ -34,6 +34,10 @@ static constexpr int HIGH_SCORE_Y = -70;
 static constexpr int X_START = 44;
 static constexpr int Y_START = 22;
 
+static constexpr int ENEMY_X_START = 67;
+static constexpr int ENEMY_Y_START = 10;
+
+
 static constexpr int SPEED = 1.5;
 
 /**
@@ -142,6 +146,22 @@ class Player {
 
 class Enemy {
 
+/*a sprite_ptr for its sprite
+a size for the size
+a rect for a bounding box
+a constructor that takes a starting_x, starting_y, and size and initializes ALL values
+*/  
+    public:
+    bn::sprite_ptr sprite; // bn::sprite_items::dot.create_sprite();
+    bn::fixed speed; // The speed of the player
+    bn::size size; // The width and height of the sprite
+    bn::rect enemy_bounding_box; // The rectangle around the sprite for checking collision
+
+    Enemy() : 
+    sprite(bn::sprite_items::square.create_sprite(ENEMY_X_START, ENEMY_Y_START)), speed(SPEED), size(PLAYER_SIZE), 
+    enemy_bounding_box(create_bounding_box(sprite, size)) {}
+
+
 };
 
 
@@ -163,14 +183,14 @@ int main() {
     // player.size = PLAYER_SIZE;
     // player.bounding_box = create_bounding_box(player.sprite, player.size);
 
-    bn::sprite_ptr enemy_sprite = bn::sprite_items::square.create_sprite(-30, 22);
-    bn::rect enemy_bounding_box = create_bounding_box(enemy_sprite, ENEMY_SIZE);
+    //bn::sprite_ptr enemy_sprite = bn::sprite_items::square.create_sprite(-30, 22);
+    //bn::rect enemy_bounding_box = create_bounding_box(enemy_sprite, ENEMY_SIZE);
 
     while(true) {
         player.update();
 
         // Reset the current score and player position if the player collides with enemy
-        if(enemy_bounding_box.intersects(player.bounding_box)) {
+        if(enemy.enemy_bounding_box.intersects(player.bounding_box)) {
             scoreDisplay.resetScore();
             player.sprite.set_x(44);
             player.sprite.set_y(22);
