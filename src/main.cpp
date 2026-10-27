@@ -6,6 +6,7 @@
 #include <bn_string.h>
 #include <bn_sprite_ptr.h>
 #include <bn_sprite_text_generator.h>
+#include <bn_log.h>
 
 #include "common_fixed_8x16_font.h"
 #include "bn_sprite_items_dot.h"
@@ -138,6 +139,7 @@ class Player {
         bn::fixed speed; // The speed of the player
         bn::size size; // The width and height of the sprite
         bn::rect bounding_box; // The rectangle around the sprite for checking collision
+        bn::fixed x_location = sprite.x();
 
         Player() : 
         sprite(bn::sprite_items::dot.create_sprite(X_START, Y_START)), speed(SPEED), size(PLAYER_SIZE), 
@@ -218,6 +220,7 @@ int main() {
     while(true) {
         player.update();
         enemy.update(player);
+        //BN_LOG("x", player.x_location);
 
         // Reset the current score and player position if the player collides with enemy
         if(enemy.enemy_bounding_box.intersects(player.bounding_box)) {
