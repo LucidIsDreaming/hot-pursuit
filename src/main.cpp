@@ -41,6 +41,7 @@ static constexpr int ENEMY_Y_START = 10;
 
 
 static constexpr int SPEED = 1.5;
+static constexpr int ENEMY_SPEED = 1;
 
 /**
  * Creates a rectangle centered at a sprite's location with a given size.
@@ -183,28 +184,31 @@ a constructor that takes a starting_x, starting_y, and size and initializes ALL 
         */
 
         if(sprite.x() < player.sprite.x()){
-            sprite.set_x(sprite.x() + SPEED);
+            sprite.set_x(sprite.x() + ENEMY_SPEED);
         }
 
         if(sprite.x() > player.sprite.x()){
-            sprite.set_x(sprite.x() - SPEED);
+            sprite.set_x(sprite.x() - ENEMY_SPEED);
         }
 
         if(sprite.y() > player.sprite.y()){
-            sprite.set_y(sprite.y() - SPEED);
+            sprite.set_y(sprite.y() - ENEMY_SPEED);
         }
 
         if(sprite.y() < player.sprite.y()){
-            sprite.set_y(sprite.y() + SPEED);
+            sprite.set_y(sprite.y() + ENEMY_SPEED);
         }
 
         enemy_bounding_box = create_bounding_box(sprite, size);
-        
+
+        //make a new boolean to check if player has been caught
+        player_caught = false;
         if(enemy_bounding_box.intersects(player.bounding_box)) {
             sprite.set_x(random.get_int(MIN_X, MAX_X));
             sprite.set_y(random.get_int(MIN_Y, MAX_Y));
-
             enemy_bounding_box = create_bounding_box(sprite, size);
+
+            player_caught = true;
         }
     }
     
@@ -213,10 +217,13 @@ a constructor that takes a starting_x, starting_y, and size and initializes ALL 
     bn::size size; // The width and height of the sprite
     bn::rect enemy_bounding_box; // The rectangle around the sprite for checking collision
     bn::random random;
+    bool player_caught = false;
+
+
 
     //constructor
     Enemy() : 
-    sprite(bn::sprite_items::square.create_sprite(ENEMY_X_START, ENEMY_Y_START)), speed(SPEED), size(PLAYER_SIZE), 
+    sprite(bn::sprite_items::square.create_sprite(ENEMY_X_START, ENEMY_Y_START)), speed(ENEMY_SPEED), size(PLAYER_SIZE), 
     enemy_bounding_box(create_bounding_box(sprite, size))
     {}
     
@@ -254,7 +261,7 @@ int main() {
         enemy.update(player);
 
         // Reset the current score and player position if the player collides with enemy
-        if(enemy.enemy_bounding_box.intersects(player.bounding_box)) {
+        if(enemy.player_caught == true) {
             scoreDisplay.resetScore();
             player.sprite.set_x(44);
             player.sprite.set_y(22);           
