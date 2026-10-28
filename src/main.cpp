@@ -129,6 +129,7 @@ class Player {
                 sprite.set_y(sprite.y() + SPEED);
             }
             x_player = sprite.x();
+            y_player = sprite.y();
         
 
 
@@ -142,6 +143,7 @@ class Player {
         bn::size size; // The width and height of the sprite
         bn::rect bounding_box; // The rectangle around the sprite for checking collision
         bn::fixed x_player = sprite.x();
+        bn::fixed y_player = sprite.y();
 
         Player() : 
         sprite(bn::sprite_items::dot.create_sprite(X_START, Y_START)), speed(SPEED), size(PLAYER_SIZE), 
@@ -165,7 +167,7 @@ a constructor that takes a starting_x, starting_y, and size and initializes ALL 
         Update the bounding box of the enemy
         */
 
-        BN_LOG(player.x_player);
+        BN_LOG("x ", player.x_player, " | y ", player.y_player);
     }
     
     bn::sprite_ptr sprite; // bn::sprite_items::dot.create_sprite();
