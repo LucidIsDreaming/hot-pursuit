@@ -40,8 +40,8 @@ static constexpr int ENEMY_X_START = 67;
 static constexpr int ENEMY_Y_START = 10;
 
 
-static constexpr int SPEED = 1.5;
-static constexpr int ENEMY_SPEED = 1;
+static constexpr bn::fixed SPEED = 1.5;
+static constexpr bn::fixed ENEMY_SPEED = 0.5;
 
 /**
  * Creates a rectangle centered at a sprite's location with a given size.
