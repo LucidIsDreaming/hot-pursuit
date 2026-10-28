@@ -175,7 +175,7 @@ a constructor that takes a starting_x, starting_y, and size and initializes ALL 
     public:
 
     void update(Player& player){
-        /*
+        /*  
         Move the enemy towards the player. 
         Think about how you can achieve this! 
         Consider adding a speed instance variable to the enemy
