@@ -130,9 +130,25 @@ class Player {
             if(bn::keypad::down_held()) {
                 sprite.set_y(sprite.y() + SPEED);
             }
-            x_player = sprite.x();
-            y_player = sprite.y();
         
+            //If player tries to go out of bounds, prevent player from going out of bounds
+            //If player moves too far right
+            if(sprite.x() > MAX_X) {
+                sprite.set_x(MAX_X);
+            }
+            //If player moves too far left
+            if(sprite.x() < MIN_X) {
+                sprite.set_x(MIN_X);
+            }
+            //If player moves too far bottom
+            if(sprite.y() > MAX_Y) {
+                sprite.set_y(MAX_Y);
+            }
+            //If player moves too far top
+            if(sprite.y() < MIN_Y) {
+                sprite.set_y(MIN_Y);
+            }
+
 
 
             bounding_box = create_bounding_box(sprite, size);
@@ -144,8 +160,6 @@ class Player {
         bn::fixed speed; // The speed of the player
         bn::size size; // The width and height of the sprite
         bn::rect bounding_box; // The rectangle around the sprite for checking collision
-        bn::fixed x_player = sprite.x();
-        bn::fixed y_player = sprite.y();
 
         Player() : 
         sprite(bn::sprite_items::dot.create_sprite(X_START, Y_START)), speed(SPEED), size(PLAYER_SIZE), 
@@ -196,11 +210,6 @@ a constructor that takes a starting_x, starting_y, and size and initializes ALL 
 
             player_caught = true;
         }
-
-        
-
-
-        BN_LOG("x ", player.x_player, " | y ", player.y_player);
     }
     
     bn::sprite_ptr sprite; // bn::sprite_items::dot.create_sprite();
