@@ -131,13 +131,23 @@ class Player {
             }
         
             //If player tries to go out of bounds, prevent player from going out of bounds
-
+            //If player moves too far right
             if(sprite.x() > MAX_X) {
                 sprite.set_x(MAX_X);
             }
+            //If player moves too far left
             if(sprite.x() < MIN_X) {
                 sprite.set_x(MIN_X);
             }
+            //If player moves too far bottom
+            if(sprite.y() > MAX_Y) {
+                sprite.set_y(MAX_Y);
+            }
+            //If player moves too far top
+            if(sprite.y() < MIN_Y) {
+                sprite.set_y(MIN_Y);
+            }
+
 
 
             bounding_box = create_bounding_box(sprite, size);
