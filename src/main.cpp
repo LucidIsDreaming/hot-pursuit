@@ -7,6 +7,7 @@
 #include <bn_sprite_ptr.h>
 #include <bn_sprite_text_generator.h>
 #include <bn_log.h>
+#include <bn_random.h>
 
 #include "common_fixed_8x16_font.h"
 #include "bn_sprite_items_dot.h"
@@ -180,6 +181,16 @@ a constructor that takes a starting_x, starting_y, and size and initializes ALL 
         }
 
         enemy_bounding_box = create_bounding_box(sprite, size);
+        
+        if(enemy_bounding_box.intersects(player.bounding_box)) {
+            sprite.set_x(random.get_int(MIN_X, MAX_X));
+            sprite.set_y(random.get_int(MIN_Y, MAX_Y));
+
+            enemy_bounding_box = create_bounding_box(sprite, size);
+        }
+
+        
+
 
     }
     
@@ -187,10 +198,14 @@ a constructor that takes a starting_x, starting_y, and size and initializes ALL 
     bn::fixed speed; // The speed of the player
     bn::size size; // The width and height of the sprite
     bn::rect enemy_bounding_box; // The rectangle around the sprite for checking collision
+    bn::random random;
 
+    //constructor
     Enemy() : 
     sprite(bn::sprite_items::square.create_sprite(ENEMY_X_START, ENEMY_Y_START)), speed(SPEED), size(PLAYER_SIZE), 
-    enemy_bounding_box(create_bounding_box(sprite, size)) {}
+    enemy_bounding_box(create_bounding_box(sprite, size))
+    {}
+    
 
 
 };
@@ -199,6 +214,8 @@ a constructor that takes a starting_x, starting_y, and size and initializes ALL 
 
 int main() {
     bn::core::init();
+
+    bn::random random;
 
     // Create a new score display
     ScoreDisplay scoreDisplay = ScoreDisplay();
@@ -226,7 +243,7 @@ int main() {
         if(enemy.enemy_bounding_box.intersects(player.bounding_box)) {
             scoreDisplay.resetScore();
             player.sprite.set_x(44);
-            player.sprite.set_y(22);
+            player.sprite.set_y(22);           
         }
 
         // Update the scores and disaply them
