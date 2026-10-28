@@ -130,6 +130,14 @@ class Player {
                 sprite.set_y(sprite.y() + SPEED);
             }
         
+            //If player tries to go out of bounds, prevent player from going out of bounds
+
+            if(sprite.x() > MAX_X) {
+                sprite.set_x(MAX_X);
+            }
+            if(sprite.x() < MIN_X) {
+                sprite.set_x(MIN_X);
+            }
 
 
             bounding_box = create_bounding_box(sprite, size);
