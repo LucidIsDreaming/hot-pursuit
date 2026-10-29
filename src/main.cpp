@@ -43,6 +43,8 @@ static constexpr int ENEMY_Y_START = 10;
 static constexpr bn::fixed SPEED = 1.5;
 static constexpr bn::fixed ENEMY_SPEED = 1;
 
+static constexpr int MAX_ENEMIES = 10;
+
 /**
  * Creates a rectangle centered at a sprite's location with a given size.
  * sprite the sprite to center the box around
@@ -237,6 +239,8 @@ int main() {
     bn::core::init();
 
     bn::random random;
+
+    bn::vector<bn::sprite_ptr, MAX_ENEMIES> enemyNumber = {};
 
     // Create a new score display
     ScoreDisplay scoreDisplay = ScoreDisplay();
