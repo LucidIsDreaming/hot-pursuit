@@ -224,8 +224,8 @@ a constructor that takes a starting_x, starting_y, and size and initializes ALL 
 
 
     //constructor
-    Enemy() : 
-    sprite(bn::sprite_items::square.create_sprite(ENEMY_X_START, ENEMY_Y_START)), speed(ENEMY_SPEED), size(PLAYER_SIZE), 
+    Enemy(bn::fixed x_start, bn::fixed y_start) : 
+    sprite(bn::sprite_items::square.create_sprite(x_start, y_start)), speed(ENEMY_SPEED), size(PLAYER_SIZE), 
     enemy_bounding_box(create_bounding_box(sprite, size))
     {}
     
@@ -249,7 +249,8 @@ int main() {
     // TODO: we will move the initialization logic to a constructor.
     Player player = Player();
 
-    Enemy enemy = Enemy();
+    Enemy enemy = Enemy(80, 40);
+    
     // player.sprite.set_x(44);
     // player.sprite.set_y(22);
     // player.speed = 1.5;
