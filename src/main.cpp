@@ -276,7 +276,13 @@ int main() {
     while(true) {
         player.update();
         
-        enemy.update(player);
+        //enemy.update(player);
+
+        //add the for loop to loop over enemies
+        for(int i = 0; i< enemies.size(); i++){
+            //update the vector to the players location using the index
+            enemies[i].update(player);
+        }
 
         // Reset the current score and player position if the player collides with enemy
         if(enemy.player_caught == true) {
