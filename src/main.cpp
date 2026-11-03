@@ -232,7 +232,7 @@ a constructor that takes a starting_x, starting_y, and size and initializes ALL 
 
 void add_enemy(bn::vector<Enemy, MAX_ENEMIES>& enemyNumber, 
     bn::random& random, 
-    bn::fixed start_x, bn::fixed start_y, int lifespan) {
+    bn::fixed start_x, bn::fixed start_y) {
         if(enemyNumber.size() < enemyNumber.max_size()){
             enemyNumber.push_back(Enemy(start_x, start_y));
         }
@@ -243,11 +243,7 @@ int main() {
 
     bn::random random;
 
-<<<<<<< HEAD
-    bn::vector<Enemy, MAX_ENEMIES> enemyNumber = {};
-=======
     bn::vector<Enemy, MAX_ENEMIES> enemies = {};
->>>>>>> 2fb92bf6f459c9ec04a934e774cf67a5e8ae72fd
 
     // Create a new score display
     ScoreDisplay scoreDisplay = ScoreDisplay();
@@ -257,13 +253,9 @@ int main() {
     Player player = Player();
 
     Enemy enemy = Enemy(80, 40);
-<<<<<<< HEAD
-    enemyNumber.push_back(Enemy(20,30));
-=======
     enemies.push_back(Enemy(80, 40));
     enemies.push_back(Enemy(90, 40));
     enemies.push_back(Enemy(70, 40));
->>>>>>> 2fb92bf6f459c9ec04a934e774cf67a5e8ae72fd
     
     // player.sprite.set_x(44);
     // player.sprite.set_y(22);
