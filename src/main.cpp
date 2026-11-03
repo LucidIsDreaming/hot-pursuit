@@ -228,9 +228,6 @@ a constructor that takes a starting_x, starting_y, and size and initializes ALL 
     sprite(bn::sprite_items::square.create_sprite(x_start, y_start)), speed(ENEMY_SPEED), size(PLAYER_SIZE), 
     enemy_bounding_box(create_bounding_box(sprite, size))
     {}
-    
-
-
 };
 
 
@@ -240,7 +237,7 @@ int main() {
 
     bn::random random;
 
-    bn::vector<bn::sprite_ptr, MAX_ENEMIES> enemyNumber = {};
+    bn::vector<Enemy, MAX_ENEMIES> enemyNumber = {};
 
     // Create a new score display
     ScoreDisplay scoreDisplay = ScoreDisplay();
@@ -250,6 +247,7 @@ int main() {
     Player player = Player();
 
     Enemy enemy = Enemy(80, 40);
+    enemyNumber.push_back(Enemy(20,30));
     
     // player.sprite.set_x(44);
     // player.sprite.set_y(22);
