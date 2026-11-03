@@ -230,7 +230,7 @@ a constructor that takes a starting_x, starting_y, and size and initializes ALL 
     {}
 };
 
-void add_enemy(bn::vector<Enemy, MAX_ENEMIES>& enemyNumber, 
+void add_enemy(bn::vector<Enemy, MAX_ENEMIES>& enemyNumber,
     bn::random& random, 
     bn::fixed start_x, bn::fixed start_y) {
         if(enemyNumber.size() < enemyNumber.max_size()){
@@ -253,9 +253,9 @@ int main() {
     Player player = Player();
 
     // Enemy enemy = Enemy(80, 40);
-    enemies.push_back(Enemy(80, 40));
-    enemies.push_back(Enemy(90, 40));
-    enemies.push_back(Enemy(70, 40));
+    // enemies.push_back(Enemy(random.get_unbiased_fixed(MIN_X, MIN_Y), random.get_unbiased_fixed(MIN_X, MIN_Y)));
+    // enemies.push_back(Enemy(random.get_unbiased_fixed(MIN_X, MIN_Y), random.get_unbiased_fixed(MIN_X, MIN_Y)));
+    // enemies.push_back(Enemy(random.get_unbiased_fixed(MIN_X, MIN_Y), random.get_unbiased_fixed(MIN_X, MIN_Y)));
     
     // player.sprite.set_x(44);
     // player.sprite.set_y(22);
@@ -268,7 +268,7 @@ int main() {
 
 
     //define timer for additional enemies
-    int addTimer = 0;
+    int addTimer = 60;
 
     while(true) {
         player.update();
@@ -288,9 +288,10 @@ int main() {
             }
         }
         
+        //When timer hits 0, add an enemy and reset to 60;
         if(addTimer == 0) {
-            add_enemy(enemies, random, 20, 20);
             addTimer = 60;
+            add_enemy(enemies, random, 20, 20);
         } else if(addTimer > 0) {
             addTimer -= 1;
         }
