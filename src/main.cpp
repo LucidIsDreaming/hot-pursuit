@@ -228,17 +228,18 @@ a constructor that takes a starting_x, starting_y, and size and initializes ALL 
     sprite(bn::sprite_items::square.create_sprite(x_start, y_start)), speed(ENEMY_SPEED), size(PLAYER_SIZE), 
     enemy_bounding_box(create_bounding_box(sprite, size))
     {}
-    
-
-
 };
 
 void add_enemy(bn::vector<Enemy, MAX_ENEMIES>& enemyNumber, 
     bn::random& random, 
     bn::fixed start_x, bn::fixed start_y, int lifespan) {
-        if(enemyNumber.size() < enemyNumber.max_size()){
+        if(enemyNumber.size() < enemyNumber.max_size() && lifespan == 0){
             enemyNumber.push_back(Enemy(start_x, start_y));
         }
+        if(lifespan > 0) {
+            lifespan -= 1;
+        }
+        
 }
 
 int main() {
@@ -255,7 +256,7 @@ int main() {
     // TODO: we will move the initialization logic to a constructor.
     Player player = Player();
 
-    Enemy enemy = Enemy(80, 40);
+    // Enemy enemy = Enemy(80, 40);
     enemies.push_back(Enemy(80, 40));
     enemies.push_back(Enemy(90, 40));
     enemies.push_back(Enemy(70, 40));
@@ -293,7 +294,12 @@ int main() {
                 player.bounding_box = create_bounding_box(player.sprite, player.size);
             }
         }
+        
+        if(addTimer == 0) {
+            addTimer = 60;
+        }
 
+        add_enemy(enemies, random, 20, 20, addTimer);
 
         // Update the scores and disaply them
         scoreDisplay.update();
