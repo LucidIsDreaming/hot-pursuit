@@ -232,16 +232,10 @@ a constructor that takes a starting_x, starting_y, and size and initializes ALL 
 
 void add_enemy(bn::vector<Enemy, MAX_ENEMIES>& enemyNumber, 
     bn::random& random, 
-    bn::fixed start_x, bn::fixed start_y, int lifespan) {
-
-        if(lifespan > 0) {
-            lifespan -= 1;
-        }
-
-        if(enemyNumber.size() < enemyNumber.max_size() && lifespan == 0){
+    bn::fixed start_x, bn::fixed start_y) {
+        if(enemyNumber.size() < enemyNumber.max_size()){
             enemyNumber.push_back(Enemy(start_x, start_y));
-        }
-        
+        } 
 }
 
 int main() {
@@ -296,11 +290,12 @@ int main() {
                 player.bounding_box = create_bounding_box(player.sprite, player.size);
             }
         }
-
-        add_enemy(enemies, random, 20, 20, addTimer);
         
         if(addTimer == 0) {
+            add_enemy(enemies, random, 20, 20);
             addTimer = 60;
+        } else if(addTimer > 0) {
+            addTimer -= 1;
         }
 
 
