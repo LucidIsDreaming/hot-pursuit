@@ -4,6 +4,10 @@
 #include <bn_vector.h>
 #include <bn_sprite_text_generator.h>
 
+// Number of characters required to show two of the longest numer possible in an int (-2147483647)
+static constexpr int MAX_SCORE_CHARS = 22;
+
+
 class ScoreDisplay {
     public:
         ScoreDisplay();

@@ -12,9 +12,6 @@ static constexpr int SCORE_Y = -70;
 static constexpr int HIGH_SCORE_X = -70;
 static constexpr int HIGH_SCORE_Y = -70;
 
-// Number of characters required to show two of the longest numer possible in an int (-2147483647)
-static constexpr int MAX_SCORE_CHARS = 22;
-
 
 
 ScoreDisplay::ScoreDisplay() :             

@@ -14,29 +14,22 @@
 #include "common_fixed_8x16_font.h"
 #include "bn_sprite_items_dot.h"
 #include "bn_sprite_items_cop.h"
-#include "Player.h"
 
+#include "Player.h"
 #include "enemy.h"
 #include "scoredisplay.h"
 
 // Width and height of the the player bounding box
-<<<<<<< HEAD
-static constexpr bn::size ENEMY_SIZE = {8, 8};
-
-// Number of characters required to show two of the longest numer possible in an int (-2147483647)
-static constexpr int MAX_SCORE_CHARS = 22;
-=======
-static constexpr bn::size PLAYER_SIZE = {8, 8};
+// static constexpr bn::size PLAYER_SIZE = {8, 8};
 //static constexpr bn::size ENEMY_SIZE = {8, 8};
 
-static constexpr int MIN_Y = -bn::display::height() / 2;
-static constexpr int MAX_Y = bn::display::height() / 2;
-static constexpr int MIN_X = -bn::display::width() / 2;
-static constexpr int MAX_X = bn::display::width() / 2;
+// static constexpr int MIN_Y = -bn::display::height() / 2;
+// static constexpr int MAX_Y = bn::display::height() / 2;
+// static constexpr int MIN_X = -bn::display::width() / 2;
+// static constexpr int MAX_X = bn::display::width() / 2;
 
 // // Number of characters required to show two of the longest numer possible in an int (-2147483647)
 // static constexpr int MAX_SCORE_CHARS = 22;
->>>>>>> 26cd05dfb8af275a36b485423db71bd43ca4c98c
 
 // // Score location
 // static constexpr int SCORE_X = 70;
@@ -46,13 +39,13 @@ static constexpr int MAX_X = bn::display::width() / 2;
 // static constexpr int HIGH_SCORE_X = -70;
 // static constexpr int HIGH_SCORE_Y = -70;
 
-static constexpr int ENEMY_X_START = 67;
-static constexpr int ENEMY_Y_START = 10;
+// static constexpr int ENEMY_X_START = 67;
+// static constexpr int ENEMY_Y_START = 10;
 
 
-static constexpr bn::fixed ENEMY_SPEED = 1;
+// static constexpr bn::fixed ENEMY_SPEED = 1;
 
-static constexpr int MAX_ENEMIES = 10;
+// static constexpr int MAX_ENEMIES = 10;
 
 /**
  * Creates a rectangle centered at a sprite's location with a given size.

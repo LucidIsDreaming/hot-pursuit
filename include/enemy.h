@@ -5,6 +5,19 @@
 #include <bn_random.h>
 #include <bn_rect.h>
 
+#include "Player.h"
+
+
+bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size);
+
+static constexpr int ENEMY_X_START = 67;
+static constexpr int ENEMY_Y_START = 10;
+
+
+
+static constexpr int MAX_ENEMIES = 10;
+
+
 
 class Enemy {
 

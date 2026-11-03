@@ -1,4 +1,7 @@
 #include "enemy.h"
+#include "Player.h"
+#include "bn_sprite_items_cop.h"
+
 
 static constexpr bn::fixed ENEMY_SPEED = 1;
 

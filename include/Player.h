@@ -19,6 +19,9 @@ static constexpr int Y_START = 22;
 //Speed of the player
 static constexpr bn::fixed SPEED = 1.5;
 
+bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size);
+
+
 class Player {
     public:
         /**
