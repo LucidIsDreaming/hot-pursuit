@@ -14,15 +14,10 @@
 #include "common_fixed_8x16_font.h"
 #include "bn_sprite_items_dot.h"
 #include "bn_sprite_items_cop.h"
+#include "Player.h"
 
 // Width and height of the the player bounding box
-static constexpr bn::size PLAYER_SIZE = {8, 8};
 static constexpr bn::size ENEMY_SIZE = {8, 8};
-
-static constexpr int MIN_Y = -bn::display::height() / 2;
-static constexpr int MAX_Y = bn::display::height() / 2;
-static constexpr int MIN_X = -bn::display::width() / 2;
-static constexpr int MAX_X = bn::display::width() / 2;
 
 // Number of characters required to show two of the longest numer possible in an int (-2147483647)
 static constexpr int MAX_SCORE_CHARS = 22;
@@ -35,14 +30,10 @@ static constexpr int SCORE_Y = -70;
 static constexpr int HIGH_SCORE_X = -70;
 static constexpr int HIGH_SCORE_Y = -70;
 
-static constexpr int X_START = 44;
-static constexpr int Y_START = 22;
-
 static constexpr int ENEMY_X_START = 67;
 static constexpr int ENEMY_Y_START = 10;
 
 
-static constexpr bn::fixed SPEED = 1.5;
 static constexpr bn::fixed ENEMY_SPEED = 1;
 
 static constexpr int MAX_ENEMIES = 10;
@@ -52,12 +43,12 @@ static constexpr int MAX_ENEMIES = 10;
  * sprite the sprite to center the box around
  * box_size the dimensions of the bounding box
  */
-bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size) {
-    return bn::rect(sprite.x().round_integer(),
-                    sprite.y().round_integer(),
-                    box_size.width(),
-                    box_size.height());
-}
+// bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size) {
+//     return bn::rect(sprite.x().round_integer(),
+//                     sprite.y().round_integer(),
+//                     box_size.width(),
+//                     box_size.height());
+// }
 
 /**
  * Displays a score and high score.
@@ -114,61 +105,61 @@ class ScoreDisplay {
         bn::sprite_text_generator text_generator; // Text generator for scores
 };
 
-class Player {
-    public:
-        /**
-         * Update the position and bounding box of the player based on d-pad movement.
-         */
-        void update() {
-            if(bn::keypad::right_held()) {
-                sprite.set_x(sprite.x() + SPEED);
-            }
-            if(bn::keypad::left_held()) {
-                sprite.set_x(sprite.x() - SPEED);
-            }
+// class Player {
+//     public:
+//         /**
+//          * Update the position and bounding box of the player based on d-pad movement.
+//          */
+//         void update() {
+//             if(bn::keypad::right_held()) {
+//                 sprite.set_x(sprite.x() + SPEED);
+//             }
+//             if(bn::keypad::left_held()) {
+//                 sprite.set_x(sprite.x() - SPEED);
+//             }
 
-            // TODO: Add logic for up and down
-            if(bn::keypad::up_held()) {
-                sprite.set_y(sprite.y() - SPEED);
-            }
-            if(bn::keypad::down_held()) {
-                sprite.set_y(sprite.y() + SPEED);
-            }
+//             // TODO: Add logic for up and down
+//             if(bn::keypad::up_held()) {
+//                 sprite.set_y(sprite.y() - SPEED);
+//             }
+//             if(bn::keypad::down_held()) {
+//                 sprite.set_y(sprite.y() + SPEED);
+//             }
         
-            //If player tries to go out of bounds, prevent player from going out of bounds
-            //If player moves too far right
-            if(sprite.x() > MAX_X) {
-                sprite.set_x(MAX_X);
-            }
-            //If player moves too far left
-            if(sprite.x() < MIN_X) {
-                sprite.set_x(MIN_X);
-            }
-            //If player moves too far bottom
-            if(sprite.y() > MAX_Y) {
-                sprite.set_y(MAX_Y);
-            }
-            //If player moves too far top
-            if(sprite.y() < MIN_Y) {
-                sprite.set_y(MIN_Y);
-            }
+//             //If player tries to go out of bounds, prevent player from going out of bounds
+//             //If player moves too far right
+//             if(sprite.x() > MAX_X) {
+//                 sprite.set_x(MAX_X);
+//             }
+//             //If player moves too far left
+//             if(sprite.x() < MIN_X) {
+//                 sprite.set_x(MIN_X);
+//             }
+//             //If player moves too far bottom
+//             if(sprite.y() > MAX_Y) {
+//                 sprite.set_y(MAX_Y);
+//             }
+//             //If player moves too far top
+//             if(sprite.y() < MIN_Y) {
+//                 sprite.set_y(MIN_Y);
+//             }
 
 
 
-            bounding_box = create_bounding_box(sprite, size);
-        }
+//             bounding_box = create_bounding_box(sprite, size);
+//         }
 
 
-        // Create the sprite. This will be moved to a constructor
-        bn::sprite_ptr sprite; // bn::sprite_items::dot.create_sprite();
-        bn::fixed speed; // The speed of the player
-        bn::size size; // The width and height of the sprite
-        bn::rect bounding_box; // The rectangle around the sprite for checking collision
+//         // Create the sprite. This will be moved to a constructor
+//         bn::sprite_ptr sprite; // bn::sprite_items::dot.create_sprite();
+//         bn::fixed speed; // The speed of the player
+//         bn::size size; // The width and height of the sprite
+//         bn::rect bounding_box; // The rectangle around the sprite for checking collision
 
-        Player() : 
-        sprite(bn::sprite_items::dot.create_sprite(X_START, Y_START)), speed(SPEED), size(PLAYER_SIZE), 
-        bounding_box(create_bounding_box(sprite, size)) {}
-};
+//         Player() : 
+//         sprite(bn::sprite_items::dot.create_sprite(X_START, Y_START)), speed(SPEED), size(PLAYER_SIZE), 
+//         bounding_box(create_bounding_box(sprite, size)) {}
+// };
 
 class Enemy {
 
