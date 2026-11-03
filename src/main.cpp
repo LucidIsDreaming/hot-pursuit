@@ -8,10 +8,12 @@
 #include <bn_sprite_text_generator.h>
 #include <bn_log.h>
 #include <bn_random.h>
+#include <bn_color.h>
+#include <bn_backdrop.h>
 
 #include "common_fixed_8x16_font.h"
 #include "bn_sprite_items_dot.h"
-#include "bn_sprite_items_square.h"
+#include "bn_sprite_items_cop.h"
 
 // Width and height of the the player bounding box
 static constexpr bn::size PLAYER_SIZE = {8, 8};
@@ -225,7 +227,7 @@ a constructor that takes a starting_x, starting_y, and size and initializes ALL 
 
     //constructor
     Enemy(bn::fixed x_start, bn::fixed y_start) : 
-    sprite(bn::sprite_items::square.create_sprite(x_start, y_start)), speed(ENEMY_SPEED), size(PLAYER_SIZE), 
+    sprite(bn::sprite_items::cop.create_sprite(x_start, y_start)), speed(ENEMY_SPEED), size(PLAYER_SIZE), 
     enemy_bounding_box(create_bounding_box(sprite, size))
     {}
 };
@@ -242,6 +244,8 @@ void add_enemy(bn::vector<Enemy, MAX_ENEMIES>& enemyNumber,
 
 int main() {
     bn::core::init();
+    //background
+    bn::backdrop::set_color(bn::color(5,17,7));
 
     bn::random random;
 
@@ -286,7 +290,14 @@ int main() {
             if(enemies[i].player_caught == true) {
                 scoreDisplay.resetScore();
                 player.sprite.set_x(44);
-                player.sprite.set_y(22);           
+                player.sprite.set_y(22);  
+                
+                while(enemies.size() >1){
+                    enemies.pop_back();
+                }
+                
+                //update the player bounding box
+                player.bounding_box = create_bounding_box(player.sprite, player.size);
             }
         }
         
