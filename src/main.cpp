@@ -170,77 +170,77 @@ class Player {
         bounding_box(create_bounding_box(sprite, size)) {}
 };
 
-class Enemy {
+// class Enemy {
 
-/*a sprite_ptr for its sprite
-a size for the size
-a rect for a bounding box
-a constructor that takes a starting_x, starting_y, and size and initializes ALL values
-*/  
-    public:
+// /*a sprite_ptr for its sprite
+// a size for the size
+// a rect for a bounding box
+// a constructor that takes a starting_x, starting_y, and size and initializes ALL values
+// */  
+//     public:
 
-    void update(Player& player){
-        /*  
-        Move the enemy towards the player. 
-        Think about how you can achieve this! 
-        Consider adding a speed instance variable to the enemy
-        Update the bounding box of the enemy
-        */
+//     void update(Player& player){
+//         /*  
+//         Move the enemy towards the player. 
+//         Think about how you can achieve this! 
+//         Consider adding a speed instance variable to the enemy
+//         Update the bounding box of the enemy
+//         */
 
-        if(sprite.x() < player.sprite.x()){
-            sprite.set_x(sprite.x() + ENEMY_SPEED);
-        }
+//         if(sprite.x() < player.sprite.x()){
+//             sprite.set_x(sprite.x() + ENEMY_SPEED);
+//         }
 
-        if(sprite.x() > player.sprite.x()){
-            sprite.set_x(sprite.x() - ENEMY_SPEED);
-        }
+//         if(sprite.x() > player.sprite.x()){
+//             sprite.set_x(sprite.x() - ENEMY_SPEED);
+//         }
 
-        if(sprite.y() > player.sprite.y()){
-            sprite.set_y(sprite.y() - ENEMY_SPEED);
-        }
+//         if(sprite.y() > player.sprite.y()){
+//             sprite.set_y(sprite.y() - ENEMY_SPEED);
+//         }
 
-        if(sprite.y() < player.sprite.y()){
-            sprite.set_y(sprite.y() + ENEMY_SPEED);
-        }
+//         if(sprite.y() < player.sprite.y()){
+//             sprite.set_y(sprite.y() + ENEMY_SPEED);
+//         }
 
-        enemy_bounding_box = create_bounding_box(sprite, size);
+//         enemy_bounding_box = create_bounding_box(sprite, size);
 
-        //make a new boolean to check if player has been caught
-        player_caught = false;
-        if(enemy_bounding_box.intersects(player.bounding_box)) {
-            sprite.set_x(random.get_int(MIN_X, MAX_X));
-            sprite.set_y(random.get_int(MIN_Y, MAX_Y));
-            enemy_bounding_box = create_bounding_box(sprite, size);
+//         //make a new boolean to check if player has been caught
+//         player_caught = false;
+//         if(enemy_bounding_box.intersects(player.bounding_box)) {
+//             sprite.set_x(random.get_int(MIN_X, MAX_X));
+//             sprite.set_y(random.get_int(MIN_Y, MAX_Y));
+//             enemy_bounding_box = create_bounding_box(sprite, size);
 
-            player_caught = true;
-        }
-    }
+//             player_caught = true;
+//         }
+//     }
     
-    bn::sprite_ptr sprite; // bn::sprite_items::dot.create_sprite();
-    bn::fixed speed; // The speed of the player
-    bn::size size; // The width and height of the sprite
-    bn::rect enemy_bounding_box; // The rectangle around the sprite for checking collision
-    bn::random random;
-    bool player_caught = false;
+//     bn::sprite_ptr sprite; // bn::sprite_items::dot.create_sprite();
+//     bn::fixed speed; // The speed of the player
+//     bn::size size; // The width and height of the sprite
+//     bn::rect enemy_bounding_box; // The rectangle around the sprite for checking collision
+//     bn::random random;
+//     bool player_caught = false;
 
 
 
-    //constructor
-    Enemy(bn::fixed x_start, bn::fixed y_start) : 
-    sprite(bn::sprite_items::cop.create_sprite(x_start, y_start)), speed(ENEMY_SPEED), size(PLAYER_SIZE), 
-    enemy_bounding_box(create_bounding_box(sprite, size))
-    {}
-};
+//     //constructor
+//     Enemy(bn::fixed x_start, bn::fixed y_start) : 
+//     sprite(bn::sprite_items::cop.create_sprite(x_start, y_start)), speed(ENEMY_SPEED), size(PLAYER_SIZE), 
+//     enemy_bounding_box(create_bounding_box(sprite, size))
+//     {}
+// };
 
-void add_enemy(bn::vector<Enemy, MAX_ENEMIES>& enemyNumber,
-    bn::random& random, 
-    bn::fixed start_x, bn::fixed start_y) {
-        start_x = random.get_unbiased_fixed(MIN_X, MAX_X);
-        start_y = random.get_unbiased_fixed(MIN_Y, MAX_Y);
-        if(enemyNumber.size() < enemyNumber.max_size()){
-            enemyNumber.push_back(Enemy(start_x, start_y));
-        } 
-}
+// void add_enemy(bn::vector<Enemy, MAX_ENEMIES>& enemyNumber,
+//     bn::random& random, 
+//     bn::fixed start_x, bn::fixed start_y) {
+//         start_x = random.get_unbiased_fixed(MIN_X, MAX_X);
+//         start_y = random.get_unbiased_fixed(MIN_Y, MAX_Y);
+//         if(enemyNumber.size() < enemyNumber.max_size()){
+//             enemyNumber.push_back(Enemy(start_x, start_y));
+//         } 
+// }
 
 int main() {
     bn::core::init();
