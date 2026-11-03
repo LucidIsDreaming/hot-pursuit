@@ -231,8 +231,7 @@ a constructor that takes a starting_x, starting_y, and size and initializes ALL 
 };
 
 void add_enemy(bn::vector<Enemy, MAX_ENEMIES>& enemyNumber, 
-    bn::random& random, 
-    bn::fixed start_x, bn::fixed start_y) {
+    bn::random& random) {
         if(enemyNumber.size() < enemyNumber.max_size()){
             enemyNumber.push_back(Enemy(start_x, start_y));
         } 
