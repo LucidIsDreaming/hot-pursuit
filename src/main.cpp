@@ -286,7 +286,11 @@ int main() {
             if(enemies[i].player_caught == true) {
                 scoreDisplay.resetScore();
                 player.sprite.set_x(44);
-                player.sprite.set_y(22);   
+                player.sprite.set_y(22);  
+                
+                while(enemies.size() >1){
+                    enemies.pop_back();
+                }
                 
                 //update the player bounding box
                 player.bounding_box = create_bounding_box(player.sprite, player.size);
