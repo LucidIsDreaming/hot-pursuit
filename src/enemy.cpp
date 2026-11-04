@@ -2,13 +2,9 @@
 #include "Player.h"
 #include "bn_sprite_items_cop.h"
 
-
-static constexpr bn::fixed ENEMY_SPEED = 1;
-
-
-Enemy::Enemy(bn::fixed x_start, bn::fixed y_start, bn::fixed speed) : 
+Enemy::Enemy(bn::fixed x_start, bn::fixed y_start, bn::fixed enemySpeed) : 
     sprite(bn::sprite_items::cop.create_sprite(x_start, y_start)),
-     speed(speed), size(PLAYER_SIZE), 
+     speed(enemySpeed), size(PLAYER_SIZE), 
     enemy_bounding_box(create_bounding_box(sprite, size))
     {}
 

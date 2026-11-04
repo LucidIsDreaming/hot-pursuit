@@ -40,5 +40,5 @@ a constructor that takes a starting_x, starting_y, and size and initializes ALL 
 
 
     //constructor
-    Enemy(bn::fixed x_start, bn::fixed y_start, bn::fixed speed);
+    Enemy(bn::fixed x_start, bn::fixed y_start, bn::fixed enemySpeed);
 };
