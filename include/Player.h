@@ -17,7 +17,7 @@ static constexpr int X_START = 44;
 static constexpr int Y_START = 22;
 
 //Speed of the player
-static constexpr bn::fixed SPEED = 1.5;
+static constexpr bn::fixed SPEED = 5;
 
 bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size);
 

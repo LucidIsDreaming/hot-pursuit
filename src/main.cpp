@@ -10,6 +10,7 @@
 #include <bn_random.h>
 #include <bn_color.h>
 #include <bn_backdrop.h>
+#include <bn_log.h>
 
 #include "common_fixed_8x16_font.h"
 #include "bn_sprite_items_dot.h"
@@ -52,8 +53,7 @@ int main() {
 
 
     //define timer for additional enemies
-    int addTimer = 60;
-    bn::fixed addedSpeed = 1;
+    int addTimer = 180;
 
     while(true) {
         player.update();
@@ -82,22 +82,18 @@ int main() {
         
         //When timer hits 0, add an enemy and reset to 60;
         if(addTimer == 0) {
-            addTimer = 60;
+            addTimer = 180;
 
             //move add_enemy to main
 
             if(enemies.size() < enemies.max_size()) {
                 bn::fixed start_x = random.get_unbiased_fixed(MIN_X, MAX_X);
                 bn::fixed start_y = random.get_unbiased_fixed(MIN_Y, MAX_Y);
-                bn::fixed speed =+ addedSpeed;
-
-<<<<<<< HEAD
-                enemies.push_back(Enemy(start_x, start_y, speed));
-=======
-                bn::fixed enemySpeed = 1 + (enemies.size() + bn::fixed(0.2));
+                bn::fixed enemySpeed = 0.5 + (enemies.size());
+                BN_LOG(enemySpeed);
+                
 
                 enemies.push_back(Enemy(start_x, start_y, enemySpeed));
->>>>>>> cfc821734fb39db777564055888cf57c9ea7541a
 
             }
         } else if(addTimer > 0) {
