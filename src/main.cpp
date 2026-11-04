@@ -53,6 +53,7 @@ int main() {
 
     //define timer for additional enemies
     int addTimer = 60;
+    bn::fixed addedSpeed = 1;
 
     while(true) {
         player.update();
@@ -88,8 +89,9 @@ int main() {
             if(enemies.size() < enemies.max_size()) {
                 bn::fixed start_x = random.get_unbiased_fixed(MIN_X, MAX_X);
                 bn::fixed start_y = random.get_unbiased_fixed(MIN_Y, MAX_Y);
+                bn::fixed speed =+ addedSpeed;
 
-                enemies.push_back(Enemy(start_x, start_y));
+                enemies.push_back(Enemy(start_x, start_y, speed));
 
             }
         } else if(addTimer > 0) {

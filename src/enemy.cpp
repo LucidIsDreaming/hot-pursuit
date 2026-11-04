@@ -6,7 +6,7 @@
 static constexpr bn::fixed ENEMY_SPEED = 1;
 
 
-Enemy::Enemy(bn::fixed x_start, bn::fixed y_start) : 
+Enemy::Enemy(bn::fixed x_start, bn::fixed y_start, bn::fixed speed) : 
     sprite(bn::sprite_items::cop.create_sprite(x_start, y_start)),
      speed(ENEMY_SPEED), size(PLAYER_SIZE), 
     enemy_bounding_box(create_bounding_box(sprite, size))
