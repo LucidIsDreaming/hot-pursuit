@@ -89,7 +89,9 @@ int main() {
                 bn::fixed start_x = random.get_unbiased_fixed(MIN_X, MAX_X);
                 bn::fixed start_y = random.get_unbiased_fixed(MIN_Y, MAX_Y);
 
-                enemies.push_back(Enemy(start_x, start_y));
+                bn::fixed enemySpeed = 1 + (enemies.size() + bn::fixed(0.2));
+
+                enemies.push_back(Enemy(start_x, start_y, enemySpeed));
 
             }
         } else if(addTimer > 0) {
