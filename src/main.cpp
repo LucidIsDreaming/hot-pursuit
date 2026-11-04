@@ -1,19 +1,6 @@
 #include <bn_core.h>
-#include <bn_display.h>
-#include <bn_keypad.h>
-#include <bn_rect.h>
-#include <bn_size.h>
-#include <bn_string.h>
-#include <bn_sprite_ptr.h>
-#include <bn_sprite_text_generator.h>
-#include <bn_log.h>
-#include <bn_random.h>
 #include <bn_color.h>
 #include <bn_backdrop.h>
-
-#include "common_fixed_8x16_font.h"
-#include "bn_sprite_items_dot.h"
-#include "bn_sprite_items_cop.h"
 
 #include "Player.h"
 #include "enemy.h"
@@ -90,6 +77,7 @@ int main() {
                 bn::fixed start_y = random.get_unbiased_fixed(MIN_Y, MAX_Y);
 
                 bn::fixed enemySpeed = 0.2 + (enemies.size() * bn::fixed(0.2));
+
 
                 enemies.push_back(Enemy(start_x, start_y, enemySpeed));
 

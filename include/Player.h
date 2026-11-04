@@ -1,5 +1,7 @@
 #pragma once
+
 #include <bn_sprite_ptr.h>
+#include <bn_fixed.h>
 #include <bn_size.h>
 #include <bn_rect.h>
 #include <bn_display.h>
