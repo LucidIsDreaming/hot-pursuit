@@ -40,7 +40,7 @@ int main() {
 
 
     //define timer for additional enemies
-    int addTimer = 180;
+    int addTimer = 0;
 
     while(true) {
         player.update();
@@ -77,7 +77,7 @@ int main() {
                 bn::fixed start_x = random.get_unbiased_fixed(MIN_X, MAX_X);
                 bn::fixed start_y = random.get_unbiased_fixed(MIN_Y, MAX_Y);
 
-                bn::fixed enemySpeed = 1 + (enemies.size() * bn::fixed(0.2));
+                bn::fixed enemySpeed = 0.7 + (enemies.size() * bn::fixed(0.2));
                 BN_LOG(enemySpeed);
 
 
