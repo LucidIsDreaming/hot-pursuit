@@ -8,7 +8,7 @@ static constexpr bn::fixed ENEMY_SPEED = 1;
 
 Enemy::Enemy(bn::fixed x_start, bn::fixed y_start, bn::fixed speed) : 
     sprite(bn::sprite_items::cop.create_sprite(x_start, y_start)),
-     speed(ENEMY_SPEED), size(PLAYER_SIZE), 
+     speed(speed), size(PLAYER_SIZE), 
     enemy_bounding_box(create_bounding_box(sprite, size))
     {}
 
@@ -22,19 +22,19 @@ void Enemy::update(Player& player){
         */
 
         if(sprite.x() < player.sprite.x()){
-            sprite.set_x(sprite.x() + ENEMY_SPEED);
+            sprite.set_x(sprite.x() + speed);
         }
 
         if(sprite.x() > player.sprite.x()){
-            sprite.set_x(sprite.x() - ENEMY_SPEED);
+            sprite.set_x(sprite.x() - speed);
         }
 
         if(sprite.y() > player.sprite.y()){
-            sprite.set_y(sprite.y() - ENEMY_SPEED);
+            sprite.set_y(sprite.y() - speed);
         }
 
         if(sprite.y() < player.sprite.y()){
-            sprite.set_y(sprite.y() + ENEMY_SPEED);
+            sprite.set_y(sprite.y() + speed);
         }
 
         enemy_bounding_box = create_bounding_box(sprite, size);

@@ -91,7 +91,13 @@ int main() {
                 bn::fixed start_y = random.get_unbiased_fixed(MIN_Y, MAX_Y);
                 bn::fixed speed =+ addedSpeed;
 
+<<<<<<< HEAD
                 enemies.push_back(Enemy(start_x, start_y, speed));
+=======
+                bn::fixed enemySpeed = 1 + (enemies.size() + bn::fixed(0.2));
+
+                enemies.push_back(Enemy(start_x, start_y, enemySpeed));
+>>>>>>> cfc821734fb39db777564055888cf57c9ea7541a
 
             }
         } else if(addTimer > 0) {
