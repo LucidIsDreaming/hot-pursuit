@@ -20,16 +20,6 @@
 #include "scoredisplay.h"
 
 
-void add_enemy(bn::vector<Enemy, MAX_ENEMIES>& enemyNumber,
-    bn::random& random, 
-    bn::fixed start_x, bn::fixed start_y) {
-        start_x = random.get_unbiased_fixed(MIN_X, MAX_X);
-        start_y = random.get_unbiased_fixed(MIN_Y, MAX_Y);
-        if(enemyNumber.size() < enemyNumber.max_size()){
-            enemyNumber.push_back(Enemy(start_x, start_y));
-        } 
-}
-
 int main() {
     bn::core::init();
     //background
@@ -95,11 +85,11 @@ int main() {
 
             //move add_enemy to main
 
-            if(enemyNumber.size() < enemyNumber.max_size()) {
-                start_x = random.get_unbiased_fixed(MIN_X, MAX_X);
-                start_y = random.get_unbiased_fixed(MIN_Y, MAX_Y);
+            if(enemies.size() < enemies.max_size()) {
+                bn::fixed start_x = random.get_unbiased_fixed(MIN_X, MAX_X);
+                bn::fixed start_y = random.get_unbiased_fixed(MIN_Y, MAX_Y);
 
-                enemyNumber.push_back(Enemy(start_x, start_y));
+                enemies.push_back(Enemy(start_x, start_y));
 
             }
         } else if(addTimer > 0) {
